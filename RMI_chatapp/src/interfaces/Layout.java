@@ -40,12 +40,14 @@ public class Layout extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
+
         jLabel5 = new javax.swing.JLabel();
         create_chat_panel = new javax.swing.JPanel();
         list_groups_panel = new javax.swing.JPanel();
         chat_panel = new javax.swing.JPanel();
         edit_profile_panel = new javax.swing.JPanel();
         manage_users_panel = new javax.swing.JPanel();
+
 
         Register = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -166,6 +168,7 @@ public class Layout extends javax.swing.JFrame {
         );
 
 
+
         javax.swing.GroupLayout manage_users_panelLayout = new javax.swing.GroupLayout(manage_users_panel);
         manage_users_panel.setLayout(manage_users_panelLayout);
         manage_users_panelLayout.setHorizontalGroup(
@@ -183,6 +186,7 @@ public class Layout extends javax.swing.JFrame {
         MainFrame.setLayer(chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         MainFrame.setLayer(edit_profile_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         MainFrame.setLayer(manage_users_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
 
         Register.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -368,6 +372,7 @@ public class Layout extends javax.swing.JFrame {
         MainFrameLayout.setHorizontalGroup(
             MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
+
             .addComponent(login_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MainFrameLayout.createSequentialGroup()
@@ -399,12 +404,14 @@ public class Layout extends javax.swing.JFrame {
                 .addGroup(MainFrameLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
 
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         MainFrameLayout.setVerticalGroup(
             MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
+
             .addComponent(login_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MainFrameLayout.createSequentialGroup()
@@ -436,6 +443,7 @@ public class Layout extends javax.swing.JFrame {
                 .addGroup(MainFrameLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
 
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
@@ -502,29 +510,26 @@ public class Layout extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane MainFrame;
+
     private javax.swing.JPanel chat_panel;
     private javax.swing.JPanel create_chat_panel;
     private javax.swing.JPanel edit_profile_panel;
 
     private javax.swing.JPanel Register;
 
+
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+
 
     private javax.swing.JPanel list_groups_panel;
     private javax.swing.JPanel login_panel;
@@ -534,7 +539,9 @@ public class Layout extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
 
+
     private javax.swing.JPasswordField password;
+    private javax.swing.JLabel text_admin_username;
     private javax.swing.JTextField username;
     private javax.swing.JTextField username5;
     private javax.swing.JTextField username6;
