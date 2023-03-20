@@ -42,11 +42,6 @@ public class Layout extends javax.swing.JFrame {
 
 
         jLabel5 = new javax.swing.JLabel();
-        create_chat_panel = new javax.swing.JPanel();
-        list_groups_panel = new javax.swing.JPanel();
-        chat_panel = new javax.swing.JPanel();
-        edit_profile_panel = new javax.swing.JPanel();
-        manage_users_panel = new javax.swing.JPanel();
 
 
         Register = new javax.swing.JPanel();
@@ -101,45 +96,96 @@ public class Layout extends javax.swing.JFrame {
         login_panel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, -1));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         username.setBackground(new java.awt.Color(204, 204, 255));
         username.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Username"));
-        jPanel2.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 162, 297, 50));
 
         password.setBackground(new java.awt.Color(204, 204, 255));
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Password"));
-        jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 230, 297, 50));
 
         jButton1.setBackground(new java.awt.Color(102, 153, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Log In");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 307, 178, 35));
 
         jLabel2.setFont(new java.awt.Font("Revamped", 0, 30)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("RMI CHAT");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 78, 190, 48));
 
         jLabel3.setText("New to Chat ?");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 371, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(204, 204, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(51, 51, 51));
         jButton2.setText("Sign In");
         jButton2.setBorder(null);
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 368, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/images/icons8_male_user_32.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 172, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/images/icons8_forgot_password_32.png"))); // NOI18N
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 241, -1, 39));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGap(54, 54, 54)
+                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(118, 118, 118)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(71, 71, 71)
+                            .addComponent(jLabel3)
+                            .addGap(12, 12, 12)
+                            .addComponent(jButton2))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(54, 54, 54)
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel4)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel3))
+                    .addComponent(jButton2)))
+        );
 
         login_panel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 420, 450));
 
+<<<<<<< HEAD
         create_chat_panel.setPreferredSize(new java.awt.Dimension(800, 450));
         create_chat_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -180,12 +226,9 @@ public class Layout extends javax.swing.JFrame {
             .addGap(0, 450, Short.MAX_VALUE)
         );
 
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
         MainFrame.setLayer(login_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        MainFrame.setLayer(create_chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        MainFrame.setLayer(list_groups_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        MainFrame.setLayer(chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        MainFrame.setLayer(edit_profile_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        MainFrame.setLayer(manage_users_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
 
         Register.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -374,6 +417,7 @@ public class Layout extends javax.swing.JFrame {
 
 
             .addComponent(login_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
             .addGroup(MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MainFrameLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -407,12 +451,15 @@ public class Layout extends javax.swing.JFrame {
 
 
                     .addGap(0, 0, Short.MAX_VALUE)))
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
         );
         MainFrameLayout.setVerticalGroup(
             MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
 
             .addComponent(login_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
             .addGroup(MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MainFrameLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -446,6 +493,8 @@ public class Layout extends javax.swing.JFrame {
 
 
                     .addGap(0, 0, Short.MAX_VALUE)))
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
         );
 
         getContentPane().add(MainFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -510,6 +559,7 @@ public class Layout extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane MainFrame;
+<<<<<<< HEAD
 
     private javax.swing.JPanel chat_panel;
     private javax.swing.JPanel create_chat_panel;
@@ -518,6 +568,8 @@ public class Layout extends javax.swing.JFrame {
     private javax.swing.JPanel Register;
 
 
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
@@ -529,6 +581,7 @@ public class Layout extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+<<<<<<< HEAD
 
 
     private javax.swing.JPanel list_groups_panel;
@@ -540,6 +593,9 @@ public class Layout extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
 
 
+=======
+    private javax.swing.JPanel login_panel;
+>>>>>>> parent of a7dd5a0 (layouts)
     private javax.swing.JPasswordField password;
     private javax.swing.JLabel text_admin_username;
     private javax.swing.JTextField username;
