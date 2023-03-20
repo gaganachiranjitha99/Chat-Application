@@ -42,6 +42,7 @@ public class Layout extends javax.swing.JFrame {
 
 
         jLabel5 = new javax.swing.JLabel();
+<<<<<<< HEAD
 
 
         Register = new javax.swing.JPanel();
@@ -73,6 +74,8 @@ public class Layout extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -185,6 +188,7 @@ public class Layout extends javax.swing.JFrame {
 
         login_panel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 420, 450));
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         create_chat_panel.setPreferredSize(new java.awt.Dimension(800, 450));
         create_chat_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -409,6 +413,9 @@ public class Layout extends javax.swing.JFrame {
         MainFrame.setLayer(Login, javax.swing.JLayeredPane.DEFAULT_LAYER);
         MainFrame.setLayer(Register, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+=======
+        MainFrame.setLayer(login_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+>>>>>>> parent of a7dd5a0 (layouts)
 
         javax.swing.GroupLayout MainFrameLayout = new javax.swing.GroupLayout(MainFrame);
         MainFrame.setLayout(MainFrameLayout);
@@ -417,6 +424,7 @@ public class Layout extends javax.swing.JFrame {
 
 
             .addComponent(login_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
 <<<<<<< HEAD
             .addGroup(MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MainFrameLayout.createSequentialGroup()
@@ -453,12 +461,15 @@ public class Layout extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
 =======
 >>>>>>> parent of a7dd5a0 (layouts)
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
         );
         MainFrameLayout.setVerticalGroup(
             MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
 
             .addComponent(login_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
 <<<<<<< HEAD
             .addGroup(MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MainFrameLayout.createSequentialGroup()
@@ -493,6 +504,8 @@ public class Layout extends javax.swing.JFrame {
 
 
                     .addGap(0, 0, Short.MAX_VALUE)))
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
 =======
 >>>>>>> parent of a7dd5a0 (layouts)
         );
@@ -560,6 +573,7 @@ public class Layout extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane MainFrame;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     private javax.swing.JPanel chat_panel;
     private javax.swing.JPanel create_chat_panel;
@@ -568,6 +582,8 @@ public class Layout extends javax.swing.JFrame {
     private javax.swing.JPanel Register;
 
 
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
 =======
 >>>>>>> parent of a7dd5a0 (layouts)
     private javax.swing.JButton jButton1;
@@ -582,6 +598,7 @@ public class Layout extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
     private javax.swing.JPanel list_groups_panel;
@@ -593,6 +610,9 @@ public class Layout extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
 
 
+=======
+    private javax.swing.JPanel login_panel;
+>>>>>>> parent of a7dd5a0 (layouts)
 =======
     private javax.swing.JPanel login_panel;
 >>>>>>> parent of a7dd5a0 (layouts)
