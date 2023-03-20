@@ -27,7 +27,7 @@ public class Layout extends javax.swing.JFrame {
     private void initComponents() {
 
         MainFrame = new javax.swing.JLayeredPane();
-        Login = new javax.swing.JPanel();
+        login_panel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -38,12 +38,13 @@ public class Layout extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Login.setBackground(new java.awt.Color(204, 204, 255));
-        Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        login_panel.setBackground(new java.awt.Color(204, 204, 255));
+        login_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/Images/login2.jpg"))); // NOI18N
 
@@ -58,7 +59,7 @@ public class Layout extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        Login.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, -1));
+        login_panel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, -1));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -85,46 +86,59 @@ public class Layout extends javax.swing.JFrame {
         jButton2.setText("Sign In");
         jButton2.setBorder(null);
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/images/icons8_male_user_32.png"))); // NOI18N
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/images/icons8_forgot_password_32.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jLabel3)
-                .addGap(12, 12, 12)
-                .addComponent(jButton2))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGap(54, 54, 54)
+                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(118, 118, 118)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(71, 71, 71)
+                            .addComponent(jLabel3)
+                            .addGap(12, 12, 12)
+                            .addComponent(jButton2))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(54, 54, 54)
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel4)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
+                        .addGap(172, 172, 172)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
@@ -135,19 +149,19 @@ public class Layout extends javax.swing.JFrame {
                     .addComponent(jButton2)))
         );
 
-        Login.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 420, 450));
+        login_panel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 420, 450));
 
-        MainFrame.setLayer(Login, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        MainFrame.setLayer(login_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout MainFrameLayout = new javax.swing.GroupLayout(MainFrame);
         MainFrame.setLayout(MainFrameLayout);
         MainFrameLayout.setHorizontalGroup(
             MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(login_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         MainFrameLayout.setVerticalGroup(
             MainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(login_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(MainFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -191,7 +205,6 @@ public class Layout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Login;
     private javax.swing.JLayeredPane MainFrame;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -199,8 +212,10 @@ public class Layout extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel login_panel;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
