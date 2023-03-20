@@ -60,6 +60,7 @@
               <Component id="login_panel" alignment="0" max="32767" attributes="0"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -103,6 +104,8 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
 =======
 >>>>>>> parent of a7dd5a0 (layouts)
 =======
@@ -116,6 +119,7 @@
               <Component id="login_panel" alignment="0" max="32767" attributes="0"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -159,6 +163,8 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
 =======
 >>>>>>> parent of a7dd5a0 (layouts)
 =======
@@ -394,6 +400,7 @@
             </Container>
           </SubComponents>
         </Container>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -766,6 +773,8 @@
 
 
         </Container>
+=======
+>>>>>>> parent of a7dd5a0 (layouts)
 =======
 >>>>>>> parent of a7dd5a0 (layouts)
 =======
