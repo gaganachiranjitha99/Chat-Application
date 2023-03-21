@@ -77,7 +77,7 @@ public class AppLayout extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         admin_group_list = new javax.swing.JPanel();
         create_group2 = new javax.swing.JLabel();
-        maximize = new javax.swing.JLabel();
+        close1 = new javax.swing.JLabel();
         create_chat_panel = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         text_admin_username2 = new javax.swing.JLabel();
@@ -96,7 +96,19 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel55 = new javax.swing.JLabel();
         btn_create_group = new javax.swing.JButton();
         group_create_text = new javax.swing.JLabel();
-        maximize1 = new javax.swing.JLabel();
+        close2 = new javax.swing.JLabel();
+        list_groups_panel = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        img_profile5 = new javax.swing.JLabel();
+        text_user_username = new javax.swing.JLabel();
+        edit_profile_link_1 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        logout2 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel63 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        client_chat_groups_panel = new javax.swing.JPanel();
+        close3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -492,8 +504,8 @@ public class AppLayout extends javax.swing.JFrame {
         create_group2.setText("Create Group");
         jPanel6.add(create_group2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, -1));
 
-        maximize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
-        jPanel6.add(maximize, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
+        close1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        jPanel6.add(close1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
 
         javax.swing.GroupLayout admin_panelLayout = new javax.swing.GroupLayout(admin_panel);
         admin_panel.setLayout(admin_panelLayout);
@@ -617,8 +629,8 @@ public class AppLayout extends javax.swing.JFrame {
         jPanel8.add(btn_create_group, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
         jPanel8.add(group_create_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 260, 20));
 
-        maximize1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
-        jPanel8.add(maximize1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
+        close2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        jPanel8.add(close2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
 
         javax.swing.GroupLayout create_chat_panelLayout = new javax.swing.GroupLayout(create_chat_panel);
         create_chat_panel.setLayout(create_chat_panelLayout);
@@ -635,10 +647,115 @@ public class AppLayout extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel9.setBackground(new java.awt.Color(32, 44, 51));
+
+        img_profile5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/user profile.png"))); // NOI18N
+
+        text_user_username.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        text_user_username.setForeground(new java.awt.Color(255, 255, 255));
+        text_user_username.setText("Welcome User");
+
+        edit_profile_link_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        edit_profile_link_1.setForeground(new java.awt.Color(0, 255, 255));
+        edit_profile_link_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/editProfile.png"))); // NOI18N
+        edit_profile_link_1.setText("Edit Profile");
+
+        jLabel60.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/joinGroup.png"))); // NOI18N
+        jLabel60.setText("Join Group");
+
+        logout2.setBackground(new java.awt.Color(255, 0, 0));
+        logout2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        logout2.setForeground(new java.awt.Color(255, 0, 0));
+        logout2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/log_out.png"))); // NOI18N
+        logout2.setText("Log out");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(text_user_username)
+                    .addComponent(img_profile5, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel60)
+                            .addComponent(edit_profile_link_1)))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(logout2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(img_profile5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(text_user_username)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel60)
+                .addGap(18, 18, 18)
+                .addComponent(edit_profile_link_1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logout2)
+                .addGap(15, 15, 15))
+        );
+
+        jPanel10.setBackground(new java.awt.Color(17, 27, 33));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel63.setBackground(new java.awt.Color(0, 168, 132));
+        jLabel63.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(0, 168, 132));
+        jLabel63.setText("Chat Groups");
+        jPanel10.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
+
+        javax.swing.GroupLayout client_chat_groups_panelLayout = new javax.swing.GroupLayout(client_chat_groups_panel);
+        client_chat_groups_panel.setLayout(client_chat_groups_panelLayout);
+        client_chat_groups_panelLayout.setHorizontalGroup(
+            client_chat_groups_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 358, Short.MAX_VALUE)
+        );
+        client_chat_groups_panelLayout.setVerticalGroup(
+            client_chat_groups_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 268, Short.MAX_VALUE)
+        );
+
+        jScrollPane2.setViewportView(client_chat_groups_panel);
+
+        jPanel10.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 360, 270));
+
+        close3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        jPanel10.add(close3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
+
+        javax.swing.GroupLayout list_groups_panelLayout = new javax.swing.GroupLayout(list_groups_panel);
+        list_groups_panel.setLayout(list_groups_panelLayout);
+        list_groups_panelLayout.setHorizontalGroup(
+            list_groups_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, list_groups_panelLayout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))
+        );
+        list_groups_panelLayout.setVerticalGroup(
+            list_groups_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         jLayeredPane1.setLayer(login_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(register_panal, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(admin_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(create_chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(list_groups_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -660,6 +777,11 @@ public class AppLayout extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(create_chat_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(list_groups_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -680,6 +802,11 @@ public class AppLayout extends javax.swing.JFrame {
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(create_chat_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(list_groups_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -748,14 +875,20 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JPanel admin_group_list;
     private javax.swing.JPanel admin_panel;
     private javax.swing.JButton btn_create_group;
+    private javax.swing.JPanel client_chat_groups_panel;
+    private javax.swing.JLabel close1;
+    private javax.swing.JLabel close2;
+    private javax.swing.JLabel close3;
     private javax.swing.JPanel create_chat_panel;
     private javax.swing.JLabel create_group;
     private javax.swing.JLabel create_group2;
     private javax.swing.JLabel create_group3;
     private javax.swing.JLabel create_group4;
+    private javax.swing.JLabel edit_profile_link_1;
     private javax.swing.JLabel group_create_text;
     private javax.swing.JLabel img_profile;
     private javax.swing.JLabel img_profile3;
+    private javax.swing.JLabel img_profile5;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -786,11 +919,14 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -798,22 +934,25 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel link_all_users;
+    private javax.swing.JPanel list_groups_panel;
     private javax.swing.JPanel login_panel;
     private javax.swing.JLabel logout;
     private javax.swing.JLabel logout1;
-    private javax.swing.JLabel maximize;
-    private javax.swing.JLabel maximize1;
+    private javax.swing.JLabel logout2;
     private javax.swing.JPanel register_panal;
     private javax.swing.JLabel text_admin_username;
     private javax.swing.JLabel text_admin_username2;
+    private javax.swing.JLabel text_user_username;
     private javax.swing.JTextField textgroupdescription;
     private javax.swing.JTextField textgroupname;
     // End of variables declaration//GEN-END:variables
