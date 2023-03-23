@@ -6,6 +6,7 @@
 package services;
 
 import com.mysql.cj.protocol.Message;
+import interfaces.ChatClient;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -25,16 +26,6 @@ public interface Chat extends Remote{
     public void unsubscribre(int group_id,ChatClient c) throws RemoteException;
     
     public boolean is_subscribed(int client_id) throws RemoteException;
-
-    public static class ChatClient {
-
-        public ChatClient() {
-        }
-
-        int getId() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
     
     
     

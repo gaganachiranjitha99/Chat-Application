@@ -1,8 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package services;
 
+import com.mysql.cj.protocol.Message;
 import interfaces.ChatClient;
-import interfaces.Message;
-import pojos.Groups;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,11 +16,15 @@ import java.io.ObjectOutputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.Iterator;
 
+/**
+ *
+ * @author MSI
+ */
 public class ChatService extends UnicastRemoteObject implements Chat {
-
-    Message newmsg = null;
+    
+    
+     Message newmsg = null;
     int group_id;
     ArrayList<ChatClient> subs = new ArrayList<>();
 
@@ -138,5 +146,13 @@ public class ChatService extends UnicastRemoteObject implements Chat {
 //        }
 
     }
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

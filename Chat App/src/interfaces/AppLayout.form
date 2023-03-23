@@ -210,10 +210,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="linkreg" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnlogin" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="linkreg" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="174" max="32767" attributes="0"/>
@@ -227,7 +224,10 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
-                          <Component id="text_login_errors" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="btnlogin" min="-2" pref="144" max="-2" attributes="0"/>
+                              <Component id="text_login_errors" min="-2" pref="178" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -268,7 +268,7 @@
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="linkreg" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="63" max="32767" attributes="0"/>
+                          <EmptySpace pref="79" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -344,6 +344,9 @@
                       <Image iconType="3" name="/interfaces/icons/icons8_eye_32.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="showMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
@@ -382,7 +385,6 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="error"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel22">
@@ -434,6 +436,9 @@
                       <Image iconType="3" name="/interfaces/icons/icons8_hide_32.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="disableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -982,6 +987,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Create Group"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="create_groupMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="link_all_users">
                   <Properties>
@@ -1160,7 +1168,7 @@
                                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel38" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="create_group4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btn_chat_groups" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel40" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="text_admin_username2" min="-2" max="-2" attributes="0"/>
@@ -1184,7 +1192,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="text_admin_username2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="create_group4" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_chat_groups" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1224,6 +1232,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Log out"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logout1MouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="img_profile3">
                   <Properties>
@@ -1231,6 +1242,9 @@
                       <Image iconType="3" name="/interfaces/icons/admin.png"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="img_profile3MouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel38">
                   <Properties>
@@ -1260,7 +1274,7 @@
                     <Property name="text" type="java.lang.String" value="Users"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="create_group4">
+                <Component class="javax.swing.JLabel" name="btn_chat_groups">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -1273,6 +1287,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Groups"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_chat_groupsMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1379,9 +1396,12 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Create Group"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_create_groupMouseClicked"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="260" y="330" width="130" height="40"/>
+                      <AbsoluteConstraints x="260" y="350" width="130" height="40"/>
                     </Constraint>
                   </Constraints>
                 </Component>
