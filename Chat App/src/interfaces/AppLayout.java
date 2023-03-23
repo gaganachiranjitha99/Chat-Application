@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author MSI
@@ -163,7 +165,7 @@ public class AppLayout extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         remove = new javax.swing.JButton();
         close9 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
@@ -258,9 +260,19 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel23.setText("Password");
 
         close4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        close4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                close4MouseClicked(evt);
+            }
+        });
 
         jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/minimize.png"))); // NOI18N
         jLabel34.setText("jLabel34");
+        jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel34MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -389,6 +401,11 @@ public class AppLayout extends javax.swing.JFrame {
         login_panel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 530));
 
         register_panel.setPreferredSize(new java.awt.Dimension(880, 531));
+        register_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                register_panelMouseClicked(evt);
+            }
+        });
         register_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(32, 44, 51));
@@ -461,6 +478,11 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel35.setText("jLabel34");
 
         close8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        close8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                close8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -603,12 +625,13 @@ public class AppLayout extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(img_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(text_admin_username)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(create_group3)
                                     .addComponent(create_group)
-                                    .addComponent(link_all_users)))))
+                                    .addComponent(link_all_users)))
+                            .addComponent(text_admin_username)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(logout)))
@@ -621,13 +644,13 @@ public class AppLayout extends javax.swing.JFrame {
                 .addComponent(img_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(text_admin_username)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(create_group3)
                 .addGap(18, 18, 18)
                 .addComponent(create_group)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(link_all_users)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                 .addComponent(logout)
                 .addGap(14, 14, 14))
         );
@@ -654,10 +677,20 @@ public class AppLayout extends javax.swing.JFrame {
         jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 330, 260));
 
         close1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        close1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                close1MouseClicked(evt);
+            }
+        });
         jPanel6.add(close1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
 
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/minimize.png"))); // NOI18N
         jLabel36.setText("jLabel34");
+        jLabel36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel36MouseClicked(evt);
+            }
+        });
         jPanel6.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 30, -1));
 
         javax.swing.GroupLayout admin_panelLayout = new javax.swing.GroupLayout(admin_panel);
@@ -781,10 +814,19 @@ public class AppLayout extends javax.swing.JFrame {
         jPanel8.add(group_create_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 260, 20));
 
         close2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        close2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                close2MouseClicked(evt);
+            }
+        });
         jPanel8.add(close2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
 
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/minimize.png"))); // NOI18N
-        jLabel37.setText("jLabel34");
+        jLabel37.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel37MouseClicked(evt);
+            }
+        });
         jPanel8.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 30, -1));
 
         javax.swing.GroupLayout create_chat_panelLayout = new javax.swing.GroupLayout(create_chat_panel);
@@ -886,10 +928,19 @@ public class AppLayout extends javax.swing.JFrame {
         jPanel10.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 360, 270));
 
         close3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        close3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                close3MouseClicked(evt);
+            }
+        });
         jPanel10.add(close3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
 
         jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/minimize.png"))); // NOI18N
-        jLabel39.setText("jLabel34");
+        jLabel39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel39MouseClicked(evt);
+            }
+        });
         jPanel10.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 30, -1));
 
         javax.swing.GroupLayout list_groups_panelLayout = new javax.swing.GroupLayout(list_groups_panel);
@@ -985,6 +1036,11 @@ public class AppLayout extends javax.swing.JFrame {
         jPanel12.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
 
         close5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        close5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                close5MouseClicked(evt);
+            }
+        });
         jPanel12.add(close5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
 
         edit_profile_image.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
@@ -1046,6 +1102,11 @@ public class AppLayout extends javax.swing.JFrame {
 
         jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/minimize.png"))); // NOI18N
         jLabel41.setText("jLabel34");
+        jLabel41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel41MouseClicked(evt);
+            }
+        });
         jPanel12.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 30, -1));
 
         javax.swing.GroupLayout edit_profile_panelLayout = new javax.swing.GroupLayout(edit_profile_panel);
@@ -1151,7 +1212,7 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel32.setForeground(new java.awt.Color(0, 168, 132));
         jLabel32.setText("Delete User");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         remove.setBackground(new java.awt.Color(255, 0, 0));
         remove.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -1160,9 +1221,19 @@ public class AppLayout extends javax.swing.JFrame {
         remove.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 51), 1, true));
 
         close9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        close9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                close9MouseClicked(evt);
+            }
+        });
 
         jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/minimize.png"))); // NOI18N
         jLabel43.setText("jLabel34");
+        jLabel43.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel43MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1297,9 +1368,14 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel65.setForeground(new java.awt.Color(0, 168, 132));
         jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel65.setText("Group Chat");
-        jPanel16.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, -1));
+        jPanel16.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
 
         close7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/max.png"))); // NOI18N
+        close7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                close7MouseClicked(evt);
+            }
+        });
         jPanel16.add(close7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
 
         msg_typer.addActionListener(new java.awt.event.ActionListener() {
@@ -1307,8 +1383,8 @@ public class AppLayout extends javax.swing.JFrame {
                 msg_typerActionPerformed(evt);
             }
         });
-        jPanel16.add(msg_typer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 455, 220));
-        jPanel16.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 352, 37));
+        jPanel16.add(msg_typer, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 455, 220));
+        jPanel16.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 352, 37));
 
         send_btn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         send_btn.setForeground(new java.awt.Color(0, 168, 132));
@@ -1319,21 +1395,29 @@ public class AppLayout extends javax.swing.JFrame {
                 send_btnActionPerformed(evt);
             }
         });
-        jPanel16.add(send_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, 85, 37));
+        jPanel16.add(send_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 85, 37));
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(102, 204, 0));
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("*");
-        jPanel16.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 307, 20));
+        jPanel16.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 307, 20));
 
         chat_background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         msgscrpllpane.setViewportView(chat_background);
 
-        jPanel16.add(msgscrpllpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 445, 210));
+        jPanel16.add(msgscrpllpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 445, 210));
 
         jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/minimize.png"))); // NOI18N
         jLabel44.setText("jLabel34");
+        jLabel44.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel44MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel44MouseEntered(evt);
+            }
+        });
         jPanel16.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 30, -1));
 
         javax.swing.GroupLayout chat_panelLayout = new javax.swing.GroupLayout(chat_panel);
@@ -1343,13 +1427,22 @@ public class AppLayout extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chat_panelLayout.createSequentialGroup()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE))
         );
         chat_panelLayout.setVerticalGroup(
             chat_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
             .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jLayeredPane1.setLayer(login_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(register_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(admin_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(create_chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(list_groups_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(edit_profile_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(manage_users_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -1389,7 +1482,7 @@ public class AppLayout extends javax.swing.JFrame {
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(chat_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chat_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         jLayeredPane1Layout.setVerticalGroup(
@@ -1430,17 +1523,9 @@ public class AppLayout extends javax.swing.JFrame {
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(chat_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chat_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jLayeredPane1.setLayer(login_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(register_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(admin_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(create_chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(list_groups_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(edit_profile_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(manage_users_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, -1));
 
@@ -1504,6 +1589,82 @@ public class AppLayout extends javax.swing.JFrame {
     private void send_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_send_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_send_btnActionPerformed
+
+    private void close4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close4MouseClicked
+        dispose();
+    }//GEN-LAST:event_close4MouseClicked
+
+    private void close8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close8MouseClicked
+        dispose();
+    }//GEN-LAST:event_close8MouseClicked
+
+    private void close1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close1MouseClicked
+        
+         dispose();
+    }//GEN-LAST:event_close1MouseClicked
+
+    private void close2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close2MouseClicked
+        dispose();
+    }//GEN-LAST:event_close2MouseClicked
+
+    private void close3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close3MouseClicked
+        dispose();
+    }//GEN-LAST:event_close3MouseClicked
+
+    private void close5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close5MouseClicked
+        dispose();
+    }//GEN-LAST:event_close5MouseClicked
+
+    private void close9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close9MouseClicked
+         dispose();
+    }//GEN-LAST:event_close9MouseClicked
+
+    private void close7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close7MouseClicked
+        dispose();
+    }//GEN-LAST:event_close7MouseClicked
+
+    private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
+      this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_jLabel34MouseClicked
+
+    private void register_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_register_panelMouseClicked
+       this.setState(JFrame.ICONIFIED);
+
+    }//GEN-LAST:event_register_panelMouseClicked
+
+    private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
+        this.setState(JFrame.ICONIFIED);
+
+    }//GEN-LAST:event_jLabel36MouseClicked
+
+    private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
+        this.setState(JFrame.ICONIFIED);
+
+    }//GEN-LAST:event_jLabel37MouseClicked
+
+    private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
+        this.setState(JFrame.ICONIFIED);
+
+    }//GEN-LAST:event_jLabel39MouseClicked
+
+    private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
+        this.setState(JFrame.ICONIFIED);
+
+    }//GEN-LAST:event_jLabel41MouseClicked
+
+    private void jLabel43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel43MouseClicked
+        this.setState(JFrame.ICONIFIED);
+
+    }//GEN-LAST:event_jLabel43MouseClicked
+
+    private void jLabel44MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel44MouseEntered
+
+    private void jLabel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseClicked
+        this.setState(JFrame.ICONIFIED);
+
+    }//GEN-LAST:event_jLabel44MouseClicked
 
     /**
      * @param args the command line arguments
