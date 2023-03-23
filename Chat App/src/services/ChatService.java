@@ -132,14 +132,6 @@ public class ChatService extends UnicastRemoteObject implements Chat {
         subs.removeIf(n -> (n.getId()==c.getId()));
         
 
-//        try {
-//            FileInputStream filein = new FileInputStream(group_id + "_subscribers.ser");
-//            ObjectInputStream inobj = new ObjectInputStream(filein);
-//            ArrayList<ChatClient> subs_list = (ArrayList<ChatClient>) inobj.readObject();
-//
-//        } catch (Exception e) {
-//
-//        }
 
     }
     
