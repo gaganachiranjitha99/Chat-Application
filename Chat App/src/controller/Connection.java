@@ -5,16 +5,18 @@
  */
 package controller;
 
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.SessionFactory;
 
 /**
+ * Hibernate Utility class with a convenient method to get Session Factory
+ * object.
  *
- * @author MSI
+ * @author Madushan
  */
 public class Connection {
-    
-     private static final SessionFactory sessionFactory;
+
+    private static final SessionFactory sessionFactory;
     
     static {
         try {
@@ -31,15 +33,4 @@ public class Connection {
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
