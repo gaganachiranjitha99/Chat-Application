@@ -4,7 +4,40 @@
  */
 package interfaces;
 
+import com.mysql.cj.protocol.Message;
+import dbmanager.DBManager;
+import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import pojos.Groups;
+import pojos.Users;
+import services.Chat;
 
 /**
  *
@@ -15,8 +48,35 @@ public class AppLayout extends javax.swing.JFrame {
     /**
      * Creates new form AppLayout
      */
+    //added
+    int id;
+    Registry reg;
+    Chat chat;
+    int active_group;
+
+    static int xx, yy;
+   
+    ChatClient me;
+    
     public AppLayout() {
         initComponents();
+        
+        //aded
+        textusername.setBackground(new java.awt.Color(0,0,0,1));
+        textpassword.setBackground(new java.awt.Color(0,0,0,1));
+        textregemail.setBackground(new java.awt.Color(0,0,0,1));
+        textregusername.setBackground(new java.awt.Color(0,0,0,1));
+        textregnickname.setBackground(new java.awt.Color(0,0,0,1));
+        textregpassword.setBackground(new java.awt.Color(0,0,0,1));
+        textgroupname.setBackground(new java.awt.Color(0,0,0,1));
+        textgroupdescription.setBackground(new java.awt.Color(0,0,0,1));
+    
+        edit_username.setBackground(new java.awt.Color(0,0,0,1));
+        edit_nickname.setBackground(new java.awt.Color(0,0,0,1));
+        edit_password.setBackground(new java.awt.Color(0,0,0,1));
+        client_chat_groups_panel.setBackground(new java.awt.Color(0,0,0,1));
+        msg_typer.setBackground(new java.awt.Color(0,0,0,1));
+        
         
         login_panel.setVisible(true);
         register_panel.setVisible(false);
@@ -29,6 +89,449 @@ public class AppLayout extends javax.swing.JFrame {
         
         
     }
+    
+    //added
+    
+    public void app_ui_reset(){
+        login_panel.setVisible(false);
+        register_panel.setVisible(false);
+        admin_panel.setVisible(false);
+        create_chat_panel.setVisible(false);
+        list_groups_panel.setVisible(false);
+        chat_panel.setVisible(false);
+        edit_profile_panel.setVisible(false);
+        manage_users_panel.setVisible(false);
+        
+    }
+    
+    //added
+    
+    public ImageIcon toImageIcon(byte[] img) {
+        BufferedImage Imgavatar;
+        ImageIcon avatar = null;
+        try {
+            ByteArrayInputStream bis = new ByteArrayInputStream(img);
+            Imgavatar = ImageIO.read(bis);
+            if (Imgavatar != null) {
+                avatar = new ImageIcon(Imgavatar);
+            }
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        return avatar;
+    }
+    
+    
+    //added
+    public BufferedImage ImageIconToBufferedImage(ImageIcon icon) {
+        BufferedImage bi = new BufferedImage(
+                icon.getIconWidth(),
+                icon.getIconHeight(),
+                BufferedImage.TYPE_INT_RGB);
+        Graphics g = bi.createGraphics();
+        // paint the Icon to the BufferedImage.
+        icon.paintIcon(null, g, 0, 0);
+        g.dispose();
+
+        return bi;
+    }
+    
+    //added
+    public void showUsers(){
+          List data = DBManager.getDBM().allUsers();
+
+     JTable tbl = new JTable();
+     DefaultTableModel table_users = new DefaultTableModel(0, 0);
+     String header[] = new String[] { "Prority", "Task Title", "Start",
+      "Pause", "Stop", "Statulses" };
+      table_users.setColumnIdentifiers(header);
+      tbl.setModel(table_users);
+
+
+
+          for (Iterator iterator = data.iterator(); iterator.hasNext();){
+            Users user = (Users) iterator.next(); 
+            
+            table_users.addRow(new Object[] { "data", "data", "data",
+        "data", "data", "data" });
+ 
+          }
+          
+          
+      }
+    
+    
+    //added
+    public ArrayList<String> validatelogin(String username, String password) {
+        ArrayList<String> errors = new ArrayList<>();
+
+        if ("Username".equals(username) || "".equals(username)) {
+            errors.add("Username is requird");
+        }
+
+        if ("Password".equals(password) || "".equals(password)) {
+            errors.add("Password is requird");
+        }
+
+        return errors;
+    }
+    
+    //aded
+    
+    public void start_client() {
+
+        try {
+            reg = LocateRegistry.getRegistry("localhost", 2123);
+            chat = (Chat) reg.lookup("ChatAdmin");
+
+        } catch (RemoteException | NotBoundException ex) {
+            System.out.println(ex);
+        }
+
+    }
+    
+    //added
+    
+    public void sender() {
+        String m = msg_typer.getText();
+        if (m.equalsIgnoreCase("bye")) {
+            LocalDateTime myDateObj = LocalDateTime.now();
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String time_now = myDateObj.format(myFormatObj);
+
+            
+            Message msg = new Message();
+            msg.setDate_time(time_now);
+            String user = me.getUsername();
+            m = "****** " + user  + " has left the chat " + " ******";
+
+       
+            try {
+                chat.unsubscribre(enterd_grup_id, me);
+            } catch (RemoteException ex) {
+                Logger.getLogger(AppLayout.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            
+            app_ui_reset();
+            login_panel.setVisible(true);
+
+
+            System.out.println(m);
+            msg.setMessage(m);
+            
+  
+            
+            JScrollBar vertical = msgScrollPane.getVerticalScrollBar();
+            msgScrollPane.setMaximumSize(vertical.getMaximumSize());
+        
+
+            try {
+                chat.send_message(msg);
+                
+                msg_typer.setText("");
+            } catch (RemoteException ex) {
+                System.out.println(ex);
+            }
+            
+            msgScrollPane.getVerticalScrollBar().addAdjustmentListener((AdjustmentEvent e) -> {
+            e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+        });
+        } else {
+
+            LocalDateTime myDateObj = LocalDateTime.now();
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String time_now = myDateObj.format(myFormatObj);
+
+            Message msg = new Message();
+            msg.setGroup_id(enterd_grup_id);
+            msg.setMsgid(msg.hashCode());
+            msg.setUserid(me.getId());
+            msg.setName(me.getUsername());
+            msg.setMessage(m);
+            msg.setDate_time(time_now);
+
+            try {
+                chat.send_message(msg);
+                
+                
+           
+        
+                msg_typer.setText("");
+            } catch (RemoteException ex) {
+                System.out.println(ex);
+            }
+        }
+        
+
+
+    }
+    
+    //added
+    public ArrayList<String> validateform(String email, String username,String password) {
+
+        ArrayList<String> errors = new ArrayList<>();
+
+        if (email.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$") == false) {
+            errors.add("Invalid email");
+        }
+
+        if ("Username".equals(username) || "".equals(username)) {
+            errors.add("Username is requird");
+        }
+
+        if ("Password".equals(password) || "".equals(password)) {
+            errors.add("Password is requird");
+        }
+
+        if (password.length() < 4) {
+            errors.add("Password must contain more than 4 characters");
+        }
+
+        return errors;
+    }
+    
+    int y = 13;
+        
+        public void load_admin_group(boolean is_called_signin) {
+            
+         y = 13;
+         List groups = DBManager.getDBM().get_chat_groups();
+
+         admin_group_list.removeAll();
+
+         
+            for (Iterator iterator = groups.iterator(); iterator.hasNext();) {
+            Groups next = (Groups) iterator.next();
+
+            if (is_called_signin) {
+             
+                DBManager.getDBM().put_offline(next.getId());
+            }
+
+            JPanel group = new javax.swing.JPanel();
+            group.setBackground(new java.awt.Color(66, 72, 245));
+        
+            group.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+            JLabel g_action = new javax.swing.JLabel();
+            g_action.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+            if (DBManager.getDBM().is_online(next.getId())) {
+                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/end.png"))); // NOI18N
+            } else {
+                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/start.png"))); // NOI18N
+            }
+
+            g_action.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                
+                    active_group = next.getId();
+                    group_action(next.getId(), g_action);
+
+                }
+            });
+            
+
+            JLabel g_des = new javax.swing.JLabel();
+            g_des.setForeground(new java.awt.Color(255, 255, 255));
+            g_des.setText("<html>" + next.getDescription() + "</html>");
+            
+            
+
+            JLabel g_name = new javax.swing.JLabel();
+            g_name.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+            g_name.setForeground(new java.awt.Color(255, 255, 255));
+            g_name.setText(next.getName());
+            group.add(g_action, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 29));
+            group.add(g_des, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 36, 163, 33));
+            group.add(g_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 160, -1));
+            admin_group_list.add(group, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y, 294, 90));
+            
+
+            y += 110;
+        
+        
+        
+         }
+        }
+        
+        
+        
+        public void group_action(int chat_id, JLabel g_action) {
+            
+
+            File btn_icon = new File("");
+            String abspath = btn_icon.getAbsolutePath();
+
+            if (DBManager.getDBM().is_online(chat_id)) {
+              DBManager.getDBM().put_offline(chat_id);
+                ImageIcon icon = new ImageIcon(abspath + "\\src\\interfaces\\icons\\start.png");
+                g_action.setIcon(icon);
+            } else if (DBManager.getDBM().put_online(chat_id)) {
+                
+                 System.out.println("chat is offline");
+                ImageIcon icon = new ImageIcon(abspath + "\\src\\interfaces\\icons\\end.png");
+                g_action.setIcon(icon);
+                
+                start_server(chat_id);
+
+
+            }
+    }
+        
+        public void subscribe_action(int grp_id, JLabel sub_btn) {
+        try {
+            File btn_icon = new File("");
+            String abspath = btn_icon.getAbsolutePath();
+
+            if (chat.is_subscribed(me.getId())) {
+                chat.unsubscribre(grp_id, me);
+                ImageIcon icon = new ImageIcon(abspath + "\\src\\interfaces\\icons\\subscribe.png");
+                sub_btn.setIcon(icon);
+            } else {
+                chat.subscribre(grp_id, me);
+                ImageIcon icon = new ImageIcon(abspath + "\\src\\interfaces\\icons\\unsubscribe.png");
+                sub_btn.setIcon(icon);
+            }
+
+        } catch (RemoteException ex) {
+            System.out.println(ex);
+        }
+    }
+        
+        
+        static int enterd_grup_id;
+        public void enter_to_chat(int grup_id) {
+            try {
+                if (chat.is_subscribed(me.getId())) {
+                    app_ui_reset();
+                    chat_panel.setVisible(true);
+                    
+                    enterd_grup_id = grup_id;
+                    retrivemsg.start();
+                }
+
+            } catch (RemoteException ex) {
+                System.out.println(ex);
+            }
+    }
+        
+        
+      int y1 = 13;   
+      
+      
+      public void load_client_groups() {
+            
+        List chats = DBManager.getDBM().get_chat_groups();
+        client_chat_groups_panel.removeAll();
+        
+            for (Iterator iterator = chats.iterator(); iterator.hasNext();) {
+            Groups next = (Groups) iterator.next();
+            
+       
+
+            JPanel client_grp_panel = new javax.swing.JPanel();
+            client_grp_panel.setBackground(new java.awt.Color(66, 72, 245));
+            client_grp_panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            client_grp_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            
+            client_grp_panel.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    enter_to_chat(next.getId());
+
+                }
+            });
+            
+            boolean is_sub = false;
+            
+            JLabel subscribe = new javax.swing.JLabel();
+
+            if (is_sub) {
+                subscribe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/unsubscribe.png"))); // NOI18N
+            } else {
+                subscribe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/subscribe.png"))); // NOI18N
+            }
+
+            if (next.isStatus()== true) {
+                subscribe.addMouseListener(new MouseAdapter() {
+                    public void mouseClicked(MouseEvent e) {
+                        subscribe_action(next.getId(), subscribe);
+                        String m = msg_typer.getText();
+  
+                        LocalDateTime myDateObj = LocalDateTime.now();
+                        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        String time_now = myDateObj.format(myFormatObj);
+                        Message msg = new Message();
+                        msg.setDate_time(time_now);
+                        String user = me.getUsername();
+                        m = "****** " + user  + " has join the chat " + " ******";
+                        msg.setMessage(m);
+                        try {
+                            
+                            chat.send_message(msg);
+                            System.out.println(msg);
+                        } catch (RemoteException ex) {
+                            Logger.getLogger(AppLayout.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+
+                    }
+                });
+
+            } else {
+                subscribe.setEnabled(false);
+                subscribe.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            }
+
+            JLabel grp_dec = new javax.swing.JLabel();
+            grp_dec.setForeground(new java.awt.Color(255, 255, 255));
+            grp_dec.setText(next.getDescription());
+
+            JLabel statuts_txt = new javax.swing.JLabel();
+            statuts_txt.setBackground(new java.awt.Color(28, 36, 47));
+            statuts_txt.setForeground(new java.awt.Color(255, 255, 255));
+
+            JLabel statuts_icon = new javax.swing.JLabel();
+
+            if (next.isStatus()== true) {
+                statuts_txt.setText("online");
+                statuts_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/online.png")));
+            } else {
+                statuts_txt.setText("offline");
+                statuts_icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/offline.png")));
+            }
+
+            JLabel grp_name = new javax.swing.JLabel();
+            grp_name.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+            grp_name.setForeground(new java.awt.Color(255, 255, 255));
+            grp_name.setText(next.getName());
+
+            client_grp_panel.add(subscribe, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 42, 99, 35));
+            client_grp_panel.add(grp_dec, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 42, 160, 35));
+            client_grp_panel.add(statuts_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 13, 51, -1));
+            client_grp_panel.add(statuts_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 13, 18, 16));
+            client_grp_panel.add(grp_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 160, -1));
+            client_chat_groups_panel.add(client_grp_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, y1, 299, 96));
+
+            y1 += 110;
+
+     
+        }
+        }
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,18 +547,19 @@ public class AppLayout extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        textusername = new javax.swing.JTextField();
+        textpassword = new javax.swing.JPasswordField();
+        btnlogin = new javax.swing.JButton();
+        show = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        linkreg = new javax.swing.JLabel();
+        text_login_errors = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         close4 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
+        disable = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         titlebar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -165,7 +669,7 @@ public class AppLayout extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         remove = new javax.swing.JButton();
         close9 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
@@ -208,31 +712,36 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Hello! Let's get started");
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        textusername.setBackground(new java.awt.Color(204, 204, 204));
+        textusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                textusernameActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setBackground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        textpassword.setBackground(new java.awt.Color(204, 204, 204));
+        textpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                textpasswordActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(153, 153, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton1.setText("LOGIN");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnlogin.setBackground(new java.awt.Color(153, 153, 153));
+        btnlogin.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btnlogin.setText("LOGIN");
+        btnlogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnlogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnloginMouseClicked(evt);
+            }
+        });
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnloginActionPerformed(evt);
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/pass.png"))); // NOI18N
+        show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/icons8_eye_32.png"))); // NOI18N
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/userrrr.png"))); // NOI18N
 
@@ -240,16 +749,17 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 168, 132));
         jLabel6.setText("Don't you have an account?");
 
-        jLabel7.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 51, 0));
-        jLabel7.setText("Register");
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        linkreg.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        linkreg.setForeground(new java.awt.Color(153, 51, 0));
+        linkreg.setText("Register");
+        linkreg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                linkregMouseClicked(evt);
             }
         });
 
-        jLabel21.setText("error");
+        text_login_errors.setForeground(new java.awt.Color(255, 0, 0));
+        text_login_errors.setText("error");
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 168, 132));
@@ -274,6 +784,8 @@ public class AppLayout extends javax.swing.JFrame {
             }
         });
 
+        disable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/icons8_hide_32.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -284,38 +796,39 @@ public class AppLayout extends javax.swing.JFrame {
                         .addGap(185, 185, 185)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
+                        .addGap(110, 110, 110)
+                        .addComponent(disable, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(show, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel22)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textusername, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel23)
-                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(textpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))))
+                            .addComponent(linkreg)
+                            .addComponent(btnlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 174, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(close4)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(236, 236, 236))))
+                .addContainerGap(561, Short.MAX_VALUE)
+                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(close4)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(219, 219, 219)
+                .addComponent(text_login_errors, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,25 +845,23 @@ public class AppLayout extends javax.swing.JFrame {
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textusername, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12)
-                .addComponent(jLabel21)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(72, 72, 72)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(show, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(disable, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addComponent(text_login_errors)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnlogin)
+                .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(linkreg))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
@@ -1212,7 +1723,7 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel32.setForeground(new java.awt.Color(0, 168, 132));
         jLabel32.setText("Delete User");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         remove.setBackground(new java.awt.Color(255, 0, 0));
         remove.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -1435,15 +1946,6 @@ public class AppLayout extends javax.swing.JFrame {
             .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLayeredPane1.setLayer(login_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(register_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(admin_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(create_chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(list_groups_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(edit_profile_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(manage_users_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
@@ -1526,6 +2028,14 @@ public class AppLayout extends javax.swing.JFrame {
                     .addComponent(chat_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
+        jLayeredPane1.setLayer(login_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(register_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(admin_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(create_chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(list_groups_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(edit_profile_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(manage_users_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, -1));
 
@@ -1533,17 +2043,17 @@ public class AppLayout extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnloginActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void textusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textusernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_textusernameActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void textpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textpasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_textpasswordActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -1571,11 +2081,11 @@ public class AppLayout extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_msg_typerActionPerformed
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void linkregMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkregMouseClicked
         
         register_panel.setVisible(true);
         login_panel.setVisible(false);
-    }//GEN-LAST:event_jLabel7MouseClicked
+    }//GEN-LAST:event_linkregMouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         login_panel.setVisible(true);
@@ -1666,6 +2176,112 @@ public class AppLayout extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabel44MouseClicked
 
+    private void btnloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnloginMouseClicked
+                                             
+        // TODO add your handling code here:
+        String user_name = textusername.getText();
+        String user_pwd = textpassword.getText();
+
+        ArrayList<String> error = validatelogin(user_name, user_pwd);
+
+        if (error.isEmpty() == false) {
+            text_login_errors.setText(error.get(0));
+        } else {
+
+            List data = DBManager.getDBM().loginHandler(user_name, user_pwd);
+            Iterator i = data.iterator();
+            if (i.hasNext()) {
+                Users user = (Users) i.next();
+
+                String email = user.getEmail();
+                String username = user.getUsername();
+                String nickname = user.getNickname();
+                String password = user.getPassword();
+                byte[] profile_image = user.getProfileImage();
+                id = user.getId();
+
+      
+                edit_username.setText(username);
+                edit_nickname.setText(nickname);
+                edit_password.setText(password);
+
+                if(profile_image != null){
+
+                    ImageIcon imageicon = toImageIcon(profile_image);
+
+                    ImageIcon iconresized1 = new ImageIcon(imageicon.getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+                    img_profile.setIcon(iconresized1);
+                    img_profile2.setIcon(iconresized1);
+                    img_profile3.setIcon(iconresized1);
+                    img_profile4.setIcon(iconresized1);
+                    img_profile5.setIcon(iconresized1);
+                    img_profile6.setIcon(iconresized1);
+
+                    ImageIcon iconresized2 = new ImageIcon(imageicon.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
+                    edit_profile_image.setIcon(iconresized2);
+                }
+
+                if (user.getUserType().equalsIgnoreCase("admin")) {
+                    //admin user
+
+                    text_admin_username.setText("Welcome " + username);
+                    text_admin_username2.setText("Welcome " + username);
+                    text_admin_username3.setText("Welcome " + username);
+                    
+                   List users = DBManager.getDBM().get_all_users();
+            
+                    for (Iterator iterator = users.iterator(); iterator.hasNext();) {
+                        
+                        Users next = (Users) iterator.next();
+                        String del_userid =next.getId().toString(); 
+                        String del_username = next.getUsername();
+ 
+                        userlist1.addItem(del_userid +"- "+ del_username);
+
+                    }
+                    
+                    List groups = DBManager.getDBM().get_chat_groups();
+
+                    for (Iterator iterator = groups.iterator(); iterator.hasNext();) {
+                        
+                        Groups next = (Groups) iterator.next();
+                        String del_groupid =next.getId().toString(); 
+                        String del_groupname = next.getName();
+
+                        
+                    }
+                    
+
+                    
+
+                    login_panel.setVisible(false);
+                    load_admin_group(true);
+                    admin_panel.setVisible(true);
+
+                } else{
+                    //Normal user
+
+                    text_user_username.setText("Welcome " + username);
+                    text_user_username1.setText("Welcome " + username);
+                    text_user_username2.setText("Welcome " + username);
+
+                    me = new ChatClient(user.getId(), user.getUsername(), user.getNickname(), user.getEmail());
+
+                    load_client_groups();
+                    this.start_client();
+                    login_panel.setVisible(false);
+                    list_groups_panel.setVisible(true);
+
+                }
+
+            } else {
+                System.out.println("Username or Password Incorrect");
+                text_login_errors.setText("Username or Password Incorrect");
+            }
+
+        }
+    }//GEN-LAST:event_btnloginMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1705,6 +2321,7 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JPanel admin_group_list;
     private javax.swing.JPanel admin_panel;
     private javax.swing.JButton btn_create_group;
+    private javax.swing.JButton btnlogin;
     private javax.swing.JPanel chat_background;
     private javax.swing.JPanel chat_panel;
     private javax.swing.JPanel client_chat_groups_panel;
@@ -1723,6 +2340,7 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JLabel create_group3;
     private javax.swing.JLabel create_group4;
     private javax.swing.JLabel create_group5;
+    private javax.swing.JLabel disable;
     private javax.swing.JTextField edit_nickname;
     private javax.swing.JPasswordField edit_password;
     private javax.swing.JLabel edit_profile_image;
@@ -1738,7 +2356,6 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JLabel img_profile5;
     private javax.swing.JLabel img_profile6;
     private javax.swing.JLabel img_profile7;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -1755,7 +2372,6 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1781,7 +2397,6 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
@@ -1793,7 +2408,6 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
@@ -1813,10 +2427,8 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
@@ -1824,6 +2436,7 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel link_all_users;
     private javax.swing.JLabel link_all_users1;
+    private javax.swing.JLabel linkreg;
     private javax.swing.JPanel list_groups_panel;
     private javax.swing.JPanel login_panel;
     private javax.swing.JLabel logout;
@@ -1838,15 +2451,19 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JPanel register_panel;
     private javax.swing.JButton remove;
     private javax.swing.JButton send_btn;
+    private javax.swing.JLabel show;
     private javax.swing.JLabel text_admin_username;
     private javax.swing.JLabel text_admin_username1;
     private javax.swing.JLabel text_admin_username2;
+    private javax.swing.JLabel text_login_errors;
     private javax.swing.JLabel text_reg_error;
     private javax.swing.JLabel text_user_username;
     private javax.swing.JLabel text_user_username1;
     private javax.swing.JLabel text_user_username2;
     private javax.swing.JTextField textgroupdescription;
     private javax.swing.JTextField textgroupname;
+    private javax.swing.JPasswordField textpassword;
+    private javax.swing.JTextField textusername;
     private javax.swing.JLabel titlebar;
     private javax.swing.JLabel update_msg;
     // End of variables declaration//GEN-END:variables
