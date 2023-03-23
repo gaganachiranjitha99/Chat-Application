@@ -21,12 +21,9 @@ import pojos.Users;
 
 /**
  *
- * @author MSI
+ * @author Madushan
  */
 public class DBManager {
-    
-    
-    
     private static DBManager dbm;
 
     private DBManager() {
@@ -278,14 +275,5 @@ public class DBManager {
         return User;
     }
         
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
 
-/**
- *
- * @author MSI
- */
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.SessionFactory;
+
+
 public class Connection {
-    
-     private static final SessionFactory sessionFactory;
+
+    private static final SessionFactory sessionFactory;
     
     static {
         try {
@@ -31,15 +25,4 @@ public class Connection {
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

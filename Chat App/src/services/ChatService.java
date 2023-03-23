@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package services;
 
 import com.mysql.cj.protocol.Message;
@@ -136,14 +132,6 @@ public class ChatService extends UnicastRemoteObject implements Chat {
         subs.removeIf(n -> (n.getId()==c.getId()));
         
 
-//        try {
-//            FileInputStream filein = new FileInputStream(group_id + "_subscribers.ser");
-//            ObjectInputStream inobj = new ObjectInputStream(filein);
-//            ArrayList<ChatClient> subs_list = (ArrayList<ChatClient>) inobj.readObject();
-//
-//        } catch (Exception e) {
-//
-//        }
 
     }
     
