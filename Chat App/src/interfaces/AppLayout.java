@@ -1422,6 +1422,11 @@ public class AppLayout extends javax.swing.JFrame {
         edit_profile_link_1.setForeground(new java.awt.Color(0, 255, 255));
         edit_profile_link_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/editProfile.png"))); // NOI18N
         edit_profile_link_1.setText("Edit Profile");
+        edit_profile_link_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                edit_profile_link_1MouseClicked(evt);
+            }
+        });
 
         jLabel60.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(0, 255, 255));
@@ -1433,6 +1438,11 @@ public class AppLayout extends javax.swing.JFrame {
         logout2.setForeground(new java.awt.Color(255, 0, 0));
         logout2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/log_out.png"))); // NOI18N
         logout2.setText("Log out");
+        logout2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logout2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -1806,7 +1816,7 @@ public class AppLayout extends javax.swing.JFrame {
                 .addComponent(create_group1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(link_all_users1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addComponent(logout6)
                 .addGap(14, 14, 14))
         );
@@ -1873,7 +1883,7 @@ public class AppLayout extends javax.swing.JFrame {
                                 .addComponent(userlist1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(remove_user, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 103, Short.MAX_VALUE)))
+                        .addGap(0, 100, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(166, 166, 166)
@@ -2621,6 +2631,18 @@ public class AppLayout extends javax.swing.JFrame {
         show_eyeedit.setVisible(true);
         show_eyeedit.setEnabled(true);
     }//GEN-LAST:event_hide_eyeeditMouseClicked
+
+    private void edit_profile_link_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit_profile_link_1MouseClicked
+        // TODO add your handling code here:
+        app_ui_reset();
+        edit_profile_panel.setVisible(true);
+    }//GEN-LAST:event_edit_profile_link_1MouseClicked
+
+    private void logout2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout2MouseClicked
+        // TODO add your handling code here:
+        app_ui_reset();
+        login_panel.setVisible(true);
+    }//GEN-LAST:event_logout2MouseClicked
 
     
     
