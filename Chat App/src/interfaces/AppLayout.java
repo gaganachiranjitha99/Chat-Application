@@ -81,7 +81,7 @@ public class AppLayout extends javax.swing.JFrame {
         edit_nickname.setBackground(new java.awt.Color(0,0,0,1));
         edit_password.setBackground(new java.awt.Color(0,0,0,1));
         client_chat_groups_panel.setBackground(new java.awt.Color(0,0,0,1));
-        msg_typer.setBackground(new java.awt.Color(0,0,0,1));
+        aaaa.setBackground(new java.awt.Color(0,0,0,1));
         
         
         login_panel.setVisible(true);
@@ -199,7 +199,7 @@ public class AppLayout extends javax.swing.JFrame {
     //done
     
     public void sender() {
-        String m = msg_typer.getText();
+        String m = aaaa.getText();
         if (m.equalsIgnoreCase("bye")) {
             LocalDateTime myDateObj = LocalDateTime.now();
             DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -235,7 +235,7 @@ public class AppLayout extends javax.swing.JFrame {
             try {
                 chat.send_message(msg);
                 
-                msg_typer.setText("");
+                aaaa.setText("");
             } catch (RemoteException ex) {
                 System.out.println(ex);
             }
@@ -263,7 +263,7 @@ public class AppLayout extends javax.swing.JFrame {
                 
            
         
-                msg_typer.setText("");
+                aaaa.setText("");
             } catch (RemoteException ex) {
                 System.out.println(ex);
             }
@@ -465,7 +465,7 @@ public class AppLayout extends javax.swing.JFrame {
                 subscribe.addMouseListener(new MouseAdapter() {
                     public void mouseClicked(MouseEvent e) {
                         subscribe_action(next.getId(), subscribe);
-                        String m = msg_typer.getText();
+                        String m = aaaa.getText();
   
                         LocalDateTime myDateObj = LocalDateTime.now();
                         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -694,7 +694,6 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel65 = new javax.swing.JLabel();
         close7 = new javax.swing.JLabel();
         msg_typer = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         send_btn = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
         msgScrollPane = new javax.swing.JScrollPane();
@@ -1939,6 +1938,11 @@ public class AppLayout extends javax.swing.JFrame {
         edit_profile_link_3.setForeground(new java.awt.Color(0, 255, 255));
         edit_profile_link_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/editProfile.png"))); // NOI18N
         edit_profile_link_3.setText("Edit Profile");
+        edit_profile_link_3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                edit_profile_link_3MouseClicked(evt);
+            }
+        });
 
         jLabel62.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel62.setForeground(new java.awt.Color(0, 255, 255));
@@ -1950,6 +1954,11 @@ public class AppLayout extends javax.swing.JFrame {
         logout5.setForeground(new java.awt.Color(255, 0, 0));
         logout5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/log_out.png"))); // NOI18N
         logout5.setText("Log out");
+        logout5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logout5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -2019,13 +2028,17 @@ public class AppLayout extends javax.swing.JFrame {
                 msg_typerKeyPressed(evt);
             }
         });
-        jPanel16.add(msg_typer, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 455, 220));
-        jPanel16.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 352, 37));
+        jPanel16.add(msg_typer, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 352, 37));
 
         send_btn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         send_btn.setForeground(new java.awt.Color(0, 168, 132));
         send_btn.setText("SEND");
         send_btn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        send_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                send_btnMouseClicked(evt);
+            }
+        });
         send_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 send_btnActionPerformed(evt);
@@ -2063,7 +2076,7 @@ public class AppLayout extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chat_panelLayout.createSequentialGroup()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE))
+                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         chat_panelLayout.setVerticalGroup(
             chat_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2202,10 +2215,6 @@ public class AppLayout extends javax.swing.JFrame {
         int xx = evt.getX();
         int yy = evt.getY();
     }//GEN-LAST:event_titlebarMousePressed
-
-    private void msg_typerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msg_typerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_msg_typerActionPerformed
 
     private void linkregMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkregMouseClicked
         
@@ -2517,12 +2526,6 @@ public class AppLayout extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_signup_profile_picMouseClicked
 
-    private void msg_typerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_msg_typerKeyPressed
-          if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            this.sender();
-        }
-    }//GEN-LAST:event_msg_typerKeyPressed
-
     private void remove_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_remove_userMouseClicked
         String del_user = (String) userlist1.getSelectedItem();
        String del_user_id = del_user.split("-")[0];
@@ -2643,6 +2646,39 @@ public class AppLayout extends javax.swing.JFrame {
         app_ui_reset();
         login_panel.setVisible(true);
     }//GEN-LAST:event_logout2MouseClicked
+
+    private void msg_typerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msg_typerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_msg_typerActionPerformed
+
+    private void send_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_send_btnMouseClicked
+        // TODO add your handling code here:
+        
+        this.sender();
+            
+        msgScrollPane.getVerticalScrollBar().addAdjustmentListener((AdjustmentEvent e) -> {
+            e.getAdjustable().setValue(e.getAdjustable().getMaximum());
+        });
+    }//GEN-LAST:event_send_btnMouseClicked
+
+    private void msg_typerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_msg_typerKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.sender();
+        }
+    }//GEN-LAST:event_msg_typerKeyPressed
+
+    private void logout5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logout5MouseClicked
+        // TODO add your handling code here:
+        app_ui_reset();
+        login_panel.setVisible(true);
+    }//GEN-LAST:event_logout5MouseClicked
+
+    private void edit_profile_link_3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_edit_profile_link_3MouseClicked
+        // TODO add your handling code here:
+        app_ui_reset();
+        edit_profile_panel.setVisible(true);
+    }//GEN-LAST:event_edit_profile_link_3MouseClicked
 
     
     
@@ -2996,7 +3032,6 @@ public class AppLayout extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel link_all_users;
     private javax.swing.JLabel link_all_users1;
     private javax.swing.JLabel linkreg;
