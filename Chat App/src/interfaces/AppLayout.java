@@ -54,7 +54,7 @@ public class AppLayout extends javax.swing.JFrame {
     /**
      * Creates new form AppLayout
      */
-    //added
+   
     int id;
     Registry reg;
     Chat chat;
@@ -67,7 +67,7 @@ public class AppLayout extends javax.swing.JFrame {
     public AppLayout() {
         initComponents();
         
-        //aded
+        
         textusername.setBackground(new java.awt.Color(0,0,0,1));
         textpassword.setBackground(new java.awt.Color(0,0,0,1));
         textregemail.setBackground(new java.awt.Color(0,0,0,1));
@@ -128,21 +128,21 @@ public class AppLayout extends javax.swing.JFrame {
     }
     
     
-    //added
+    //done
     public BufferedImage ImageIconToBufferedImage(ImageIcon icon) {
         BufferedImage bi = new BufferedImage(
                 icon.getIconWidth(),
                 icon.getIconHeight(),
                 BufferedImage.TYPE_INT_RGB);
         Graphics g = bi.createGraphics();
-        // paint the Icon to the BufferedImage.
+        // paint the Icon for BufferedImage.
         icon.paintIcon(null, g, 0, 0);
         g.dispose();
 
         return bi;
     }
     
-    //added
+    //done
     public void showUsers(){
           List data = DBManager.getDBM().allUsers();
 
@@ -167,7 +167,7 @@ public class AppLayout extends javax.swing.JFrame {
       }
     
     
-    //added
+    //done
     public ArrayList<String> validatelogin(String username, String password) {
         ArrayList<String> errors = new ArrayList<>();
 
@@ -182,7 +182,7 @@ public class AppLayout extends javax.swing.JFrame {
         return errors;
     }
     
-    //aded
+    //done
     
     public void start_client() {
 
@@ -196,7 +196,7 @@ public class AppLayout extends javax.swing.JFrame {
 
     }
     
-    //added
+    //done
     
     public void sender() {
         String m = msg_typer.getText();
@@ -324,9 +324,9 @@ public class AppLayout extends javax.swing.JFrame {
             g_action.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
             if (DBManager.getDBM().is_online(next.getId())) {
-                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/end.png"))); // NOI18N
+                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/end.png"))); 
             } else {
-                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/start.png"))); // NOI18N
+                g_action.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/start.png")));
             }
 
             g_action.addMouseListener(new MouseAdapter() {
@@ -347,7 +347,7 @@ public class AppLayout extends javax.swing.JFrame {
             
 
             JLabel g_name = new javax.swing.JLabel();
-            g_name.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+            g_name.setFont(new java.awt.Font("Tahoma", 1, 13)); 
             g_name.setForeground(new java.awt.Color(255, 255, 255));
             g_name.setText(next.getName());
             group.add(g_action, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 29));
@@ -444,6 +444,7 @@ public class AppLayout extends javax.swing.JFrame {
             client_grp_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
             
             client_grp_panel.addMouseListener(new MouseAdapter() {
+                
                 public void mouseClicked(MouseEvent e) {
                     enter_to_chat(next.getId());
 
@@ -737,7 +738,7 @@ public class AppLayout extends javax.swing.JFrame {
 
         btnlogin.setBackground(new java.awt.Color(153, 153, 153));
         btnlogin.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        btnlogin.setText("LOGIN");
+        btnlogin.setText("log");
         btnlogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnlogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2463,7 +2464,7 @@ public class AppLayout extends javax.swing.JFrame {
             ImageIcon avatar = (ImageIcon) signup_profile_pic.getIcon();
             if (avatar != null) {
                 try {
-                    //                img = this.encodeToString(this.ImageIconToBufferedImage(avatar),"jpg");
+                 
                     BufferedImage bImage = ImageIconToBufferedImage(avatar);
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
                     ImageIO.write(bImage, "jpg", bos);
@@ -2483,7 +2484,7 @@ public class AppLayout extends javax.swing.JFrame {
     }//GEN-LAST:event_btnregMouseClicked
 
     private void signup_profile_picMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signup_profile_picMouseClicked
-        // TODO add your handling code here:
+    
         
         JFileChooser chooser = new JFileChooser(); //open image file file
         FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG Images", "jpg", "png"); //set image type filter
@@ -2492,17 +2493,14 @@ public class AppLayout extends javax.swing.JFrame {
         if (returnVal == JFileChooser.APPROVE_OPTION) { //if image selected
             File file = chooser.getSelectedFile(); //get selected file
             String strfilepath = file.getAbsolutePath(); //get abs path
-//            System.out.println(strfilepath);
+
             try {
                 ImageIcon icon = new ImageIcon(strfilepath); //string image path open as a image icon
                 ImageIcon iconresized = new ImageIcon(icon.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT)); //resize image icon fit for profile icon label
                 signup_profile_pic.setText(null); // remove label text
                 signup_profile_pic.setIcon(iconresized); //set seleted image to profile icon label 
 
-//               String img = this.encodeToString(this.ImageIconToBufferedImage(iconresized),"jpg"); 
-//               BufferedImage bimg = this.decodeToImage(img);
-//               
-//               signup_profile_pic.setIcon(new ImageIcon(bimg));
+
             } catch (Exception e) {
                 System.out.println("Exception occurred : " + e.getMessage());
             }
@@ -2682,7 +2680,7 @@ public class AppLayout extends javax.swing.JFrame {
         msg_layer.add(msg_dp,
                 new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 15, 35, 35));
 
-//        chat_background.add(msg_layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 280, 110));
+
         chat_background.add(msg_layer,
                 new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y2, 280, 110));
 
@@ -2742,7 +2740,7 @@ public class AppLayout extends javax.swing.JFrame {
         msg_layer.add(msg_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 210, -1));
         msg_layer.add(msg_dp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 35, 35));
 
-        //chat_background.add(msg_layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 280, 110));
+      
         chat_background.add(msg_layer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, y2, 280, 110));
 
         JScrollBar sb = msgScrollPane.getVerticalScrollBar();
@@ -2756,11 +2754,7 @@ public class AppLayout extends javax.swing.JFrame {
     
     
     
-    
-    
-    
-    
-    
+  
     
     
     
@@ -2792,10 +2786,7 @@ public class AppLayout extends javax.swing.JFrame {
                         }
                     }
 
-//                    if(newmsg!=preiv){
-//                        System.out.println(chat.broadcast().getMessage());
-//                        preiv = newmsg;
-//                    }
+
                     Thread.sleep(100);
                 } catch (RemoteException | NullPointerException ex) {
                     System.out.println(ex);
@@ -2828,26 +2819,7 @@ public class AppLayout extends javax.swing.JFrame {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     /**
      * @param args the command line arguments
