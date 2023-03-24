@@ -738,7 +738,7 @@ public class AppLayout extends javax.swing.JFrame {
 
         btnlogin.setBackground(new java.awt.Color(153, 153, 153));
         btnlogin.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        btnlogin.setText("LOGIN");
+        btnlogin.setText("log");
         btnlogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnlogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
