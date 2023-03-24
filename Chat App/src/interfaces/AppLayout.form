@@ -2464,7 +2464,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="jPanel16" pref="677" max="32767" attributes="0"/>
+                      <Component id="jPanel16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2566,6 +2566,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Edit Profile"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="edit_profile_link_3MouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel62">
                   <Properties>
@@ -2597,6 +2600,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Log out"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logout5MouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -2653,13 +2659,6 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="120" y="150" width="455" height="220"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField3">
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="120" y="410" width="352" height="37"/>
                     </Constraint>
                   </Constraints>
@@ -2680,6 +2679,7 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="send_btnMouseClicked"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="send_btnActionPerformed"/>
                   </Events>
                   <Constraints>
