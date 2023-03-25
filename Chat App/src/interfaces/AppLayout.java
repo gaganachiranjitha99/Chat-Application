@@ -5,6 +5,7 @@
 package interfaces;
 
 
+
 import dbmanager.DBManager;
 import java.awt.Cursor;
 import java.awt.Graphics;
@@ -269,7 +270,7 @@ public class AppLayout extends javax.swing.JFrame {
 
     }
     
-    //added
+    //validate
     public ArrayList<String> validateform(String email, String username,String password) {
 
         ArrayList<String> errors = new ArrayList<>();
@@ -441,6 +442,7 @@ public class AppLayout extends javax.swing.JFrame {
             
             client_grp_panel.addMouseListener(new MouseAdapter() {
                 
+                @Override
                 public void mouseClicked(MouseEvent e) {
                     enter_to_chat(next.getId());
 
@@ -459,6 +461,7 @@ public class AppLayout extends javax.swing.JFrame {
 
             if (next.isStatus()== true) {
                 subscribe.addMouseListener(new MouseAdapter() {
+                    @Override
                     public void mouseClicked(MouseEvent e) {
                         subscribe_action(next.getId(), subscribe);
                         String m = msg_typer.getText();
@@ -718,6 +721,7 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel3.setText("Hello! Let's get started");
 
         textusername.setBackground(new java.awt.Color(204, 204, 204));
+        textusername.setForeground(new java.awt.Color(255, 255, 255));
         textusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textusernameActionPerformed(evt);
@@ -725,6 +729,7 @@ public class AppLayout extends javax.swing.JFrame {
         });
 
         textpassword.setBackground(new java.awt.Color(204, 204, 204));
+        textpassword.setForeground(new java.awt.Color(255, 255, 255));
         textpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textpasswordActionPerformed(evt);
@@ -734,7 +739,7 @@ public class AppLayout extends javax.swing.JFrame {
         btnlogin.setBackground(new java.awt.Color(153, 153, 153));
         btnlogin.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnlogin.setText("LOG IN");
-        btnlogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnlogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(102, 102, 102)));
         btnlogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnloginMouseClicked(evt);
@@ -956,6 +961,14 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("REGISTER");
 
+        textregemail.setForeground(new java.awt.Color(255, 255, 255));
+
+        textregpassword.setForeground(new java.awt.Color(255, 255, 255));
+
+        textregnickname.setForeground(new java.awt.Color(255, 255, 255));
+
+        textregusername.setForeground(new java.awt.Color(255, 255, 255));
+
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 168, 132));
         jLabel10.setText("Email");
@@ -999,6 +1012,8 @@ public class AppLayout extends javax.swing.JFrame {
             }
         });
 
+        text_reg_errors.setForeground(new java.awt.Color(255, 51, 51));
+
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/mail_n.png"))); // NOI18N
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/uname.png"))); // NOI18N
@@ -1024,7 +1039,7 @@ public class AppLayout extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(162, Short.MAX_VALUE)
+                        .addContainerGap(167, Short.MAX_VALUE)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(123, 123, 123)
                         .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1035,13 +1050,8 @@ public class AppLayout extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel14)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGap(33, 33, 33)
-                                        .addComponent(btnreg))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel15))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel15))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(132, 132, 132)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1065,6 +1075,10 @@ public class AppLayout extends javax.swing.JFrame {
                                         .addComponent(textregpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(233, 233, 233)
+                .addComponent(btnreg)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1106,10 +1120,10 @@ public class AppLayout extends javax.swing.JFrame {
                     .addComponent(textregpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(text_reg_errors, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_reg_errors, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnreg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jLabel15))
@@ -1203,6 +1217,7 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel24.setText("All Chat Groups");
         jPanel6.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
 
+        admin_group_list.setForeground(new java.awt.Color(255, 255, 255));
         admin_group_list.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         create_group2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -1346,14 +1361,17 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel52.setText("Group Description");
         jPanel8.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
 
+        textgroupdescription.setForeground(new java.awt.Color(255, 255, 255));
         textgroupdescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textgroupdescriptionActionPerformed(evt);
             }
         });
-        jPanel8.add(textgroupdescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 260, -1));
+        jPanel8.add(textgroupdescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 260, 30));
         jPanel8.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 260, 30));
-        jPanel8.add(textgroupname, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 260, -1));
+
+        textgroupname.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel8.add(textgroupname, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 260, 30));
         jPanel8.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 250, 20));
 
         jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -1480,6 +1498,8 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel63.setForeground(new java.awt.Color(0, 168, 132));
         jLabel63.setText("Chat Groups");
         jPanel10.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, -1));
+
+        client_chat_groups_panel.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout client_chat_groups_panelLayout = new javax.swing.GroupLayout(client_chat_groups_panel);
         client_chat_groups_panel.setLayout(client_chat_groups_panelLayout);
@@ -1642,8 +1662,14 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel28.setForeground(new java.awt.Color(0, 168, 132));
         jLabel28.setText("Password");
         jPanel12.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 114, 14));
+
+        edit_username.setForeground(new java.awt.Color(255, 255, 255));
         jPanel12.add(edit_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 241, 33));
+
+        edit_nickname.setForeground(new java.awt.Color(255, 255, 255));
         jPanel12.add(edit_nickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 241, 33));
+
+        edit_password.setForeground(new java.awt.Color(255, 255, 255));
         jPanel12.add(edit_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 241, 33));
 
         btnreg1.setBackground(new java.awt.Color(102, 153, 0));
@@ -2046,8 +2072,9 @@ public class AppLayout extends javax.swing.JFrame {
         jLabel33.setForeground(new java.awt.Color(102, 204, 0));
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("*");
-        jPanel16.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 307, 20));
+        jPanel16.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 307, 30));
 
+        chat_background.setForeground(new java.awt.Color(255, 255, 255));
         chat_background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         msgScrollPane.setViewportView(chat_background);
 
@@ -2346,7 +2373,7 @@ public class AppLayout extends javax.swing.JFrame {
                     img_profile3.setIcon(iconresized1);
                     img_profile4.setIcon(iconresized1);
                     img_profile5.setIcon(iconresized1);
-                    img_profile4.setIcon(iconresized1);
+                    img_profile6.setIcon(iconresized1);
 
                     ImageIcon iconresized2 = new ImageIcon(imageicon.getImage().getScaledInstance(150, 150, Image.SCALE_DEFAULT));
                     edit_profile_image.setIcon(iconresized2);
@@ -2460,14 +2487,14 @@ public class AppLayout extends javax.swing.JFrame {
     }//GEN-LAST:event_img_profile3MouseClicked
 
     private void btnregMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnregMouseClicked
-        // TODO add your handling code here:
+      
         
         String email = textregemail.getText();
         String username = textregusername.getText();
         String nickname = textregnickname.getText();
         String password = textregpassword.getText();
 
-        //error array
+        //validations
         ArrayList<String> error = validateform(email, username, password);
 
         if (error.isEmpty() == false) {
