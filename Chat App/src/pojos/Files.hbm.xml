@@ -4,9 +4,9 @@
 <!-- Generated Mar 23, 2023 10:28:07 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojos.Files" table="files" catalog="chat_base" optimistic-lock="version">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="chatId" type="int">
             <column name="chat_id" not-null="true" />
