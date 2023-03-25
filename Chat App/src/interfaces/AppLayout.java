@@ -4,7 +4,7 @@
  */
 package interfaces;
 
-import com.mysql.cj.protocol.Message;
+
 import dbmanager.DBManager;
 import java.awt.Cursor;
 import java.awt.Graphics;
@@ -81,7 +81,7 @@ public class AppLayout extends javax.swing.JFrame {
         edit_nickname.setBackground(new java.awt.Color(0,0,0,1));
         edit_password.setBackground(new java.awt.Color(0,0,0,1));
         client_chat_groups_panel.setBackground(new java.awt.Color(0,0,0,1));
-        aaaa.setBackground(new java.awt.Color(0,0,0,1));
+        msg_typer.setBackground(new java.awt.Color(0,0,0,1));
         
         
         login_panel.setVisible(true);
@@ -199,8 +199,8 @@ public class AppLayout extends javax.swing.JFrame {
     //done
     
     public void sender() {
-        String m = aaaa.getText();
-        if (m.equalsIgnoreCase("bye")) {
+        String m = msg_typer.getText();
+        if (m.equalsIgnoreCase("Bye!!")) {
             LocalDateTime myDateObj = LocalDateTime.now();
             DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             String time_now = myDateObj.format(myFormatObj);
@@ -235,7 +235,7 @@ public class AppLayout extends javax.swing.JFrame {
             try {
                 chat.send_message(msg);
                 
-                aaaa.setText("");
+                msg_typer.setText("");
             } catch (RemoteException ex) {
                 System.out.println(ex);
             }
@@ -259,14 +259,10 @@ public class AppLayout extends javax.swing.JFrame {
 
             try {
                 chat.send_message(msg);
-                
-                
-           
-        
-                aaaa.setText("");
             } catch (RemoteException ex) {
-                System.out.println(ex);
+                Logger.getLogger(AppLayout.class.getName()).log(Level.SEVERE, null, ex);
             }
+           msg_typer.setText("");
         }
         
 
@@ -465,7 +461,7 @@ public class AppLayout extends javax.swing.JFrame {
                 subscribe.addMouseListener(new MouseAdapter() {
                     public void mouseClicked(MouseEvent e) {
                         subscribe_action(next.getId(), subscribe);
-                        String m = aaaa.getText();
+                        String m = msg_typer.getText();
   
                         LocalDateTime myDateObj = LocalDateTime.now();
                         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -479,7 +475,7 @@ public class AppLayout extends javax.swing.JFrame {
                             
                             chat.send_message(msg);
                             System.out.println(msg);
-                        } catch (RemoteException ex) {
+                        } catch(RemoteException ex){
                             Logger.getLogger(AppLayout.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
@@ -737,7 +733,7 @@ public class AppLayout extends javax.swing.JFrame {
 
         btnlogin.setBackground(new java.awt.Color(153, 153, 153));
         btnlogin.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        btnlogin.setText("log y");
+        btnlogin.setText("LOG IN");
         btnlogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnlogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -875,8 +871,8 @@ public class AppLayout extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(text_login_errors)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnlogin)
-                .addGap(61, 61, 61)
+                .addComponent(btnlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(linkreg))
@@ -1815,7 +1811,7 @@ public class AppLayout extends javax.swing.JFrame {
                 .addComponent(create_group1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(link_all_users1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addComponent(logout6)
                 .addGap(14, 14, 14))
         );
@@ -1882,7 +1878,7 @@ public class AppLayout extends javax.swing.JFrame {
                                 .addComponent(userlist1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(remove_user, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 100, Short.MAX_VALUE)))
+                        .addGap(0, 103, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(166, 166, 166)
@@ -2076,7 +2072,7 @@ public class AppLayout extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chat_panelLayout.createSequentialGroup()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE))
         );
         chat_panelLayout.setVerticalGroup(
             chat_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

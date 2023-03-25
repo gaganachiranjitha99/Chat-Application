@@ -1,8 +1,7 @@
-
 package services;
 
-import com.mysql.cj.protocol.Message;
 import interfaces.ChatClient;
+import interfaces.Message;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,14 +12,9 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-/**
- *
- * @author MSI
- */
 public class ChatService extends UnicastRemoteObject implements Chat {
-    
-    
-     Message newmsg = null;
+
+    Message newmsg = null;
     int group_id;
     ArrayList<ChatClient> subs = new ArrayList<>();
 
@@ -75,7 +69,7 @@ public class ChatService extends UnicastRemoteObject implements Chat {
 
     @Override
     public boolean is_subscribed(int client_id) {
-        //retrive_subs();
+       
       
         boolean subscribed=false;
         for (ChatClient next : subs) {
@@ -89,7 +83,7 @@ public class ChatService extends UnicastRemoteObject implements Chat {
         return subscribed;
     }
         public boolean is_subscribed_client(int client_id) {
-        //retrive_subs();
+        
       
         boolean subscribed=false;
         for (ChatClient next : subs) {
@@ -133,14 +127,7 @@ public class ChatService extends UnicastRemoteObject implements Chat {
         
 
 
+
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
