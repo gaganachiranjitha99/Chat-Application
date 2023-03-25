@@ -395,11 +395,11 @@ public class AppLayout extends javax.swing.JFrame {
 
             if (chat.is_subscribed(me.getId())) {
                 chat.unsubscribre(grp_id, me);
-                ImageIcon icon = new ImageIcon(abspath + "\\src\\interfaces\\icons\\subscribe.png");
+                ImageIcon icon = new ImageIcon(abspath + "\\src\\interfaces\\icons\\subscribe_1.png");
                 sub_btn.setIcon(icon);
             } else {
                 chat.subscribre(grp_id, me);
-                ImageIcon icon = new ImageIcon(abspath + "\\src\\interfaces\\icons\\unsubscribe.png");
+                ImageIcon icon = new ImageIcon(abspath + "\\src\\interfaces\\icons\\unsubscribe_1.png");
                 sub_btn.setIcon(icon);
             }
 
@@ -446,6 +446,7 @@ public class AppLayout extends javax.swing.JFrame {
             
             client_grp_panel.addMouseListener(new MouseAdapter() {
                 
+                @Override
                 public void mouseClicked(MouseEvent e) {
                     enter_to_chat(next.getId());
 
@@ -679,7 +680,7 @@ public class AppLayout extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        userlist1 = new javax.swing.JComboBox<String>();
+        userlist1 = new javax.swing.JComboBox<>();
         remove_user = new javax.swing.JButton();
         close9 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
@@ -706,6 +707,7 @@ public class AppLayout extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLayeredPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jLayeredPane1.setPreferredSize(new java.awt.Dimension(880, 531));
 
         login_panel.setPreferredSize(new java.awt.Dimension(880, 531));
         login_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1153,6 +1155,11 @@ public class AppLayout extends javax.swing.JFrame {
         logout.setForeground(new java.awt.Color(255, 0, 0));
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/log_out.png"))); // NOI18N
         logout.setText("Log out");
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+        });
 
         img_profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfaces/icons/admin.png"))); // NOI18N
 
@@ -1689,9 +1696,8 @@ public class AppLayout extends javax.swing.JFrame {
         edit_password.setForeground(new java.awt.Color(255, 255, 255));
         jPanel12.add(edit_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 241, 33));
 
-        btnreg1.setBackground(new java.awt.Color(102, 153, 0));
+        btnreg1.setBackground(new java.awt.Color(204, 255, 255));
         btnreg1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnreg1.setForeground(new java.awt.Color(51, 153, 0));
         btnreg1.setText("SAVE");
         btnreg1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnreg1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1854,7 +1860,7 @@ public class AppLayout extends javax.swing.JFrame {
                 .addComponent(create_group1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(link_all_users1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addComponent(logout6)
                 .addGap(14, 14, 14))
         );
@@ -1923,7 +1929,7 @@ public class AppLayout extends javax.swing.JFrame {
                                 .addComponent(userlist1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(remove_user, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 103, Short.MAX_VALUE)))
+                        .addGap(0, 100, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(166, 166, 166)
@@ -2125,6 +2131,15 @@ public class AppLayout extends javax.swing.JFrame {
             .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jLayeredPane1.setLayer(login_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(register_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(admin_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(create_chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(list_groups_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(edit_profile_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(manage_users_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
@@ -2207,14 +2222,6 @@ public class AppLayout extends javax.swing.JFrame {
                     .addComponent(chat_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jLayeredPane1.setLayer(login_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(register_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(admin_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(create_chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(list_groups_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(edit_profile_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(manage_users_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(chat_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, -1));
 
@@ -2733,6 +2740,12 @@ public class AppLayout extends javax.swing.JFrame {
         app_ui_reset();
         manage_users_panel.setVisible(true);
     }//GEN-LAST:event_jLabel40MouseClicked
+
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        // TODO add your handling code here:
+        app_ui_reset();
+        login_panel.setVisible(true);
+    }//GEN-LAST:event_logoutMouseClicked
 
     
     
