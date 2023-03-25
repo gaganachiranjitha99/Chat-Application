@@ -1,7 +1,8 @@
 
 package services;
 
-import com.mysql.cj.protocol.Message;
+import interfaces.Message;
+//import com.mysql.cj.protocol.Message;
 import interfaces.ChatClient;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author MSI
  */
-public class ChatService extends UnicastRemoteObject implements Chat {
+public abstract class ChatService extends UnicastRemoteObject implements Chat {
     
     
      Message newmsg = null;

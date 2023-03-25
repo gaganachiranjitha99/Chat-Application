@@ -4,7 +4,8 @@
  */
 package interfaces;
 
-import com.mysql.cj.protocol.Message;
+
+//import com.mysql.cj.protocol.Message;
 import dbmanager.DBManager;
 import java.awt.Cursor;
 import java.awt.Graphics;
@@ -81,7 +82,7 @@ public class AppLayout extends javax.swing.JFrame {
         edit_nickname.setBackground(new java.awt.Color(0,0,0,1));
         edit_password.setBackground(new java.awt.Color(0,0,0,1));
         client_chat_groups_panel.setBackground(new java.awt.Color(0,0,0,1));
-        aaaa.setBackground(new java.awt.Color(0,0,0,1));
+        msg_typer.setBackground(new java.awt.Color(0,0,0,1));
         
         
         login_panel.setVisible(true);
@@ -199,7 +200,7 @@ public class AppLayout extends javax.swing.JFrame {
     //done
     
     public void sender() {
-        String m = aaaa.getText();
+        String m = msg_typer.getText();
         if (m.equalsIgnoreCase("bye")) {
             LocalDateTime myDateObj = LocalDateTime.now();
             DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -235,7 +236,7 @@ public class AppLayout extends javax.swing.JFrame {
             try {
                 chat.send_message(msg);
                 
-                aaaa.setText("");
+                msg_typer.setText("");
             } catch (RemoteException ex) {
                 System.out.println(ex);
             }
@@ -263,7 +264,7 @@ public class AppLayout extends javax.swing.JFrame {
                 
            
         
-                aaaa.setText("");
+                msg_typer.setText("");
             } catch (RemoteException ex) {
                 System.out.println(ex);
             }
@@ -465,7 +466,7 @@ public class AppLayout extends javax.swing.JFrame {
                 subscribe.addMouseListener(new MouseAdapter() {
                     public void mouseClicked(MouseEvent e) {
                         subscribe_action(next.getId(), subscribe);
-                        String m = aaaa.getText();
+                        String m = msg_typer.getText();
   
                         LocalDateTime myDateObj = LocalDateTime.now();
                         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -2861,7 +2862,7 @@ public class AppLayout extends javax.swing.JFrame {
     
     public void start_server(int g_id) {
         try {
-        Chat chat = new ChatService(g_id);
+        Chat chat = new ChatService(g_id) {};
             Registry reg = LocateRegistry.createRegistry(2123);
             reg.bind("ChatAdmin", chat);
 

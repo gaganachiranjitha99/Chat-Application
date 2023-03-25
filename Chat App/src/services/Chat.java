@@ -1,7 +1,8 @@
 
 package services;
 
-import com.mysql.cj.protocol.Message;
+import interfaces.Message;
+//import com.mysql.cj.protocol.Message;
 import interfaces.ChatClient;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
