@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Iterator;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -24,7 +25,7 @@ import pojos.Users;
  * @author Madushan
  */
 public class DBManager {
-    private static DBManager dbm;
+    private static final DBManager dbm;
 
     private DBManager() {
     }
@@ -109,7 +110,7 @@ public class DBManager {
             this.init_msg_file(chatname);
             
             return true;
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             return false;
         }
 
@@ -200,11 +201,7 @@ public class DBManager {
         List Group = qu.list();
 
         Iterator i = Group.iterator();
-        if (i.hasNext()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !i.hasNext();
     }
       
       
