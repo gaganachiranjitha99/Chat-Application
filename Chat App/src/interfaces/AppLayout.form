@@ -190,13 +190,13 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                                  <Component id="disable" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="disable" pref="31" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                              <Component id="show" min="-2" pref="31" max="-2" attributes="0"/>
+                                              <Component id="show" pref="31" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -259,8 +259,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="textpassword" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="show" min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="disable" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="show" pref="0" max="32767" attributes="0"/>
+                              <Component id="disable" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="text_login_errors" min="-2" pref="16" max="-2" attributes="0"/>
@@ -441,6 +441,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="disable">
                   <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/interfaces/icons/icons8_hide_32.png"/>
                     </Property>
@@ -1817,9 +1818,12 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="text_user_username1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="jLabel61" min="-2" max="-2" attributes="0"/>
-                                          <Component id="edit_profile_link_2" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="edit_profile_link_2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel61" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
@@ -1837,7 +1841,7 @@
                           <Component id="text_user_username1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel61" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="edit_profile_link_2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="logout3" min="-2" max="-2" attributes="0"/>
