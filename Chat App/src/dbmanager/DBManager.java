@@ -20,10 +20,7 @@ import pojos.Files;
 import pojos.Groups;
 import pojos.Users;
 
-/**
- *
- * @author Madushan
- */
+
 public class DBManager {
     private static final DBManager dbm;
 
